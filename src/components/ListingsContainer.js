@@ -30,6 +30,11 @@ function ListingsContainer({ search }) {
     };
   });
 
+  function handleAddListing(newListing) {
+    const updatedListingsArray = [newListing, ...listings];
+    setListings(updatedListingsArray);
+  }
+
   const listingCards = sortedListings.map(listingObj => {
     return <ListingCard 
       key={listingObj.id} 
@@ -40,7 +45,7 @@ function ListingsContainer({ search }) {
 
   return (
     <main>
-      <NewListingForm />
+      <NewListingForm onAddListing={handleAddListing} />
       <button onClick={() => setSortBy("id")}>Sort By Default</button>
       <button onClick={() => setSortBy("location")}>Sort By Location</button>
       <ul className="cards">

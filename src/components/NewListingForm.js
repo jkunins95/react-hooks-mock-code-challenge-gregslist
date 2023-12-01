@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const NewListingForm = () => {
+const NewListingForm = ({ onAddListing }) => {
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
   const [location, setLocation] = useState("");
@@ -17,7 +17,7 @@ const NewListingForm = () => {
       body: JSON.stringify(formData),
     })
     .then(resp => resp.json())
-    .then((newListing) => console.log(newListing));
+    .then((newListing) => onAddListing(newListing));
   }
 
   return (
