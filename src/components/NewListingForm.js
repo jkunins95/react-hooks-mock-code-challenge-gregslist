@@ -7,7 +7,17 @@ const NewListingForm = () => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log({ description, image, location });
+    const formData = ({ description, image, location });
+
+    fetch("http://localhost:6001/listings", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+    .then(resp => resp.json())
+    .then((newListing) => console.log(newListing));
   }
 
   return (
