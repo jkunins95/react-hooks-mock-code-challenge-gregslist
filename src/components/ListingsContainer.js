@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Header from "./Header";
 import ListingCard from "./ListingCard";
+import NewListingForm from "./NewListingForm";
 
 function ListingsContainer({ search }) {
   const [listings, setListings] = useState([]);
@@ -39,6 +40,7 @@ function ListingsContainer({ search }) {
 
   return (
     <main>
+      <NewListingForm />
       <button onClick={() => setSortBy("id")}>Sort By Default</button>
       <button onClick={() => setSortBy("location")}>Sort By Location</button>
       <ul className="cards">
